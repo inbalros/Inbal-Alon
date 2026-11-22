@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#110d1b">
+  <meta name="color-scheme" content="dark">
+  <title>הודעה מההנהלה · ענבל ואלון</title>
+  <meta name="description" content="נתפסתם סורקים את החולצה של החתן. נפתח לכם תיק בהנהלה.">
+  <meta property="og:title" content="הודעה מההנהלה ⚠️">
+  <meta property="og:description" content="נתפסתם סורקים את החולצה של החתן. נפתח לכם תיק.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23110d1b' stroke='%23e2c27a' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='26' fill='%23e2c27a' text-anchor='middle'%3EI%26amp;A%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600&family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="js/content.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <!-- Dance-floor atmosphere -->
+  <div class="stage" aria-hidden="true">
+    <span class="glow glow-1"></span>
+    <span class="glow glow-2"></span>
+    <span class="glow glow-3"></span>
+    <div class="sparkles" id="sparkles"></div>
+  </div>
+
+  <!-- Decorative ticker -->
+  <div class="ticker" aria-hidden="true" dir="ltr" lang="en">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- ===================== PAGE 1 · THE NOTICE ===================== -->
+    <article class="sheet sheet-notice" aria-labelledby="headline">
+      <svg class="paperclip" viewBox="0 0 40 110" aria-hidden="true">
+        <path d="M28 30 V84 a12 12 0 0 1 -24 0 V18 a8 8 0 0 1 16 0 V78 a4 4 0 0 1 -8 0 V30"
+              fill="none" stroke="url(#clipGrad)" stroke-width="3.2" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="clipGrad" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" stop-color="#f3dfa6"/><stop offset=".5" stop-color="#b48a3c"/><stop offset="1" stop-color="#e2c27a"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="page-no" data-text="letterhead.page1"></span>
+
+      <header class="letterhead rise" style="--d:0">
+        <div class="crest"><span dir="ltr" data-text="couple.monogram"></span></div>
+        <p class="org" data-text="letterhead.org"></p>
+        <p class="org-sub" data-text="letterhead.sub"></p>
+        <div class="rule"><span>✦</span></div>
+      </header>
+
+      <p class="alert-pill rise" style="--d:1">
+        <span class="alert-dot" aria-hidden="true"></span>
+        <span data-text="notice.label"></span>
+      </p>
+
+      <h1 class="headline rise" id="headline" style="--d:2" data-text="notice.headline"></h1>
+
+      <p class="lead rise" style="--d:3" data-text="notice.body"></p>
+
+      <div class="warning rise" style="--d:4" role="note">
+        <span class="warning-tag" data-text="notice.urgentTag"></span>
+        <strong data-text="notice.warning"></strong>
+      </div>
+
+      <section class="twist reveal">
+        <div class="rule rule-soft"><span>✦</span></div>
+        <p class="twist-lead" data-text="notice.twistLead"></p>
+        <div class="twist-lines" data-lines="notice.twist"></div>
+      </section>
+
+      <section class="case reveal" aria-label="פרטי התיק">
+        <span class="case-tab" data-text="caseFile.tab"></span>
+        <dl class="case-fields" id="caseFields"></dl>
+        <span class="stamp case-stamp" id="caseStamp" aria-hidden="true"></span>
+      </section>
+
+      <a class="btn-cta reveal" href="#quest">
+        <span data-text="notice.cta"></span>
+        <span class="cta-arrow" aria-hidden="true">↓</span>
+      </a>
+    </article>
+
+    <!-- ===================== PAGE 2 · SIDE QUEST ===================== -->
+    <article class="sheet sheet-quest" id="quest" aria-labelledby="questTitle" tabindex="-1">
+      <span class="page-no" data-text="letterhead.page2"></span>
+
+      <header class="quest-head reveal">
+        <p class="quest-kicker" aria-hidden="true"><span>✦</span> <span dir="ltr" lang="en">Chapter II</span> <span>✦</span></p>
+        <h2 class="quest-title" id="questTitle" dir="ltr" lang="en">
+          <span class="quest-emoji" data-text="quest.emoji"></span>
+          <span class="quest-word" data-text="quest.heading"></span>
+        </h2>
+        <p class="quest-sub" data-text="quest.sub"></p>
+      </header>
+
+      <div class="quest-intro reveal">
+        <div data-lines="quest.intro"></div>
+        <p class="disclaimer"><span data-text="quest.disclaimer"></span>
+          <svg viewBox="0 0 120 14" aria-hidden="true"><path d="M2 9 C 30 2, 60 13, 118 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </p>
+      </div>
+
+      <div class="progress" id="progress">
+        <div class="progress-top">
+          <span class="progress-label" id="progressLabel" data-text="quest.progressLabel"></span>
+          <span class="progress-count" dir="ltr"><b id="count">0</b><span class="slash">/</span><span id="total">10</span></span>
+        </div>
+        <div class="bar" id="bar" role="progressbar" aria-labelledby="progressLabel" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0">
+          <span class="bar-fill" id="barFill"></span>
+          <span class="bar-ticks" id="barTicks"></span>
+        </div>
+        <p class="verdict" id="verdict" aria-live="polite"></p>
+      </div>
+
+      <ol class="quests" id="quests"></ol>
+
+      <div class="closed-banner" id="closedBanner">
+        <p data-text="quest.closedBanner"></p>
+        <button type="button" class="btn-link" id="reopenPardon" data-text="quest.closedButton"></button>
+      </div>
+
+      <div class="reset-row">
+        <button type="button" class="btn-ghost" id="reset" data-text="quest.reset"></button>
+      </div>
+    </article>
+
+    <footer class="footer reveal">
+      <p class="f-names"><span data-text="couple.bride"></span> <span class="amp" dir="ltr">&amp;</span> <span data-text="couple.groom"></span></p>
+      <p class="f-date" dir="ltr" data-text="couple.date"></p>
+      <p class="f-joke" data-text="footer.joke"></p>
+      <p class="f-made" dir="ltr" lang="en" data-text="footer.madeWith"></p>
+    </footer>
+  </main>
+
+  <!-- ===================== THE PARDON ===================== -->
+  <div class="pardon" id="pardon" role="dialog" aria-modal="true" aria-labelledby="pardonTitle" aria-describedby="pardonBody" hidden>
+    <div class="pardon-backdrop" data-close></div>
+    <div class="pardon-card">
+      <p class="pardon-kicker"><span data-text="pardon.kicker"></span> · <span dir="ltr" data-case-no></span></p>
+      <h2 class="pardon-title" id="pardonTitle" data-text="pardon.title"></h2>
+      <p class="pardon-body" id="pardonBody" data-text="pardon.body"></p>
+      <p class="pardon-free" data-text="pardon.free"></p>
+      <span class="stamp pardon-stamp" aria-hidden="true">
+        <span data-text="pardon.stamp"></span>
+        <small dir="ltr" lang="en">CASE CLOSED</small>
+      </span>
+
+      <div class="signatures">
+        <div class="sig-block">
+          <span class="sig" data-text="couple.bride"></span>
+          <span class="sig-role" data-text="pardon.brideRole"></span>
+        </div>
+        <div class="wax" aria-hidden="true"><span dir="ltr" data-text="couple.monogram"></span></div>
+        <div class="sig-block">
+          <span class="sig" data-text="couple.groom"></span>
+          <span class="sig-role" data-text="pardon.groomRole"></span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-cta btn-pardon" id="pardonClose" data-text="pardon.button"></button>
+      <p class="pardon-note" data-text="pardon.note"></p>
+    </div>
+  </div>
+
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
+  <noscript>
+    <p style="padding:2rem;text-align:center;color:#f8f2e7">כדי לכפר על המעשים שלכם, יש להפעיל JavaScript. 😏</p>
+  </noscript>
+</body>
+</html>
