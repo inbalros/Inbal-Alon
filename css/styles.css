@@ -39,6 +39,9 @@
 }
 
 /* ---------- Base ---------- */
+/* Fixed design colours: opt out of automatic/forced dark mode on every browser */
+:root { color-scheme: only light; }
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
