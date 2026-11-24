@@ -39,19 +39,15 @@
 }
 
 /* ---------- Base ---------- */
-/* ONE fixed design, whatever the phone's theme.
-   1. "only light" stops Chrome / Android WebView auto-dark from repainting.
-   2. Some browsers (e.g. Samsung Internet) ignore that, but skip their own
-      forced dark mode when a site declares it handles dark itself. The
-      block below is that declaration: it re-states the SAME colours, so the
-      page looks identical — it is not a separate dark theme. */
-:root { color-scheme: only light; }
+/* ONE fixed design, whatever the phone's Light/Dark setting.
+   Android's automatic darkening (used by Chrome AND Samsung Internet) skips
+   any page that declares a dark colour scheme. The page's base really is
+   dark (the dance floor), and every element sets its own colours explicitly,
+   so this declaration changes nothing visually — it only stops the phone
+   from repainting the ivory sheets, gold gradients and progress bar.
+   There is deliberately no separate dark theme. */
+:root { color-scheme: dark; }
 html { background-color: #110d1b; }
-@media (prefers-color-scheme: dark) {
-  :root { color-scheme: only light; }
-  html { background-color: #110d1b; }
-  body { background-color: #110d1b; color: #f8f2e7; }
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 
