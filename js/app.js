@@ -63,6 +63,212 @@
     }
   })();
 
+  /* ---------- Opening crew: Inbal & Alon rappel in ----------
+     1. slide down their ropes (hands on the rope)
+     2. let go — the ropes zip back up and disappear
+     3. wag an index finger ("no no no")
+     4. cross their arms — that's their resting pose
+     Afterwards, tapping either one replays 3 + 4 for that character only. */
+  (function buildCrew() {
+    var crew = $("#crew");
+    if (!crew) return;
+
+    var LOOK = {
+      alon: { skin: "#efc6a4", edge: "#c98d6a", sleeve: "#fffdf8" },
+      inbal: { skin: "#f2cdb0", edge: "#cf9a7a", sleeve: null },
+    };
+
+    /* --- drawing helpers (all poses are drawn with the rope on the LEFT;
+           Inbal's arms + rope are mirrored so each rope is on the outer side) */
+    function limb(d, c) {
+      return '<path d="' + d + '" fill="none" stroke="' + c.edge + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<path d="' + d + '" fill="none" stroke="' + c.skin + '" stroke-width="5.2" stroke-linecap="round"/>';
+    }
+    function sleeve(d, c) {
+      if (!c.sleeve) return "";
+      return '<path d="' + d + '" fill="none" stroke="#d8cdbb" stroke-width="9.6" stroke-linecap="round"/>' +
+        '<path d="' + d + '" fill="none" stroke="' + c.sleeve + '" stroke-width="8" stroke-linecap="round"/>';
+    }
+    function fist(x, y, c, r) {
+      return '<circle cx="' + x + '" cy="' + y + '" r="' + (r || 4.4) + '" fill="' + c.skin + '" stroke="' + c.edge + '" stroke-width=".9"/>';
+    }
+    // A fist with ONLY the index finger raised, on the thumb side (never centred).
+    function pointer(x, y, c) {
+      return '<g transform="translate(' + x + ' ' + y + ') rotate(-6)">' +
+        '<rect x="1.2" y="-22" width="4.2" height="14" rx="2.1" fill="' + c.skin + '" stroke="' + c.edge + '" stroke-width=".9"/>' +
+        '<rect x="-5.6" y="-10.5" width="11.2" height="10.5" rx="3.8" fill="' + c.skin + '" stroke="' + c.edge + '" stroke-width=".9"/>' +
+        '<path d="M-4.2 -6.4 Q0 -8.6 4.4 -6.2" fill="none" stroke="' + c.edge + '" stroke-width=".9" stroke-linecap="round"/>' +
+        '<path d="M-5.4 -3.2 h2.6" fill="none" stroke="' + c.edge + '" stroke-width=".8" stroke-linecap="round"/>' +
+        "</g>";
+    }
+
+    function arms(c) {
+      return (
+        // 1. gripping the rope: guide hand up, brake hand at the hip
+        '<g class="arms arms-grip">' +
+          sleeve("M27 66 L23 64.5", c) + limb("M27 66 Q17 64 12 47", c) + fist(11, 44, c) +
+          sleeve("M53 66 L51 70", c) + limb("M53 66 Q42 90 15 90", c) + fist(12, 90, c) +
+        "</g>" +
+        // 2. letting go
+        '<g class="arms arms-drop">' +
+          sleeve("M27 66 L23 68", c) + limb("M27 66 Q16 72 11 80", c) + fist(10, 82, c) +
+          sleeve("M53 66 L57 68", c) + limb("M53 66 Q64 72 69 80", c) + fist(70, 82, c) +
+        "</g>" +
+        // 3. scolding: one hand on the hip, index finger wagging
+        '<g class="arms arms-wag">' +
+          sleeve("M53 66 L56 69", c) + limb("M53 66 Q64 76 57 87", c) + fist(56, 88, c) +
+          sleeve("M27 66 L22.5 64.5", c) + limb("M27 66 L14 62", c) +
+          '<g class="fore">' + limb("M14 62 L7 49", c) + pointer(7, 49, c) + "</g>" +
+          '<path class="swish" d="M-4 36 Q-8 29 -4 22 M0 18 Q6 13 12 16" fill="none" stroke="#5d5266" stroke-width="1.3" stroke-linecap="round"/>' +
+        "</g>" +
+        // 4. arms crossed, very unimpressed
+        '<g class="arms arms-cross">' +
+          sleeve("M27 66 L24.5 70.5", c) + limb("M27 66 Q20 74 23 83", c) + limb("M23 83 L49 80", c) + fist(50, 79.5, c, 3.8) +
+          sleeve("M53 66 L55.5 70.5", c) + limb("M53 66 Q60 75 57 85", c) + limb("M57 85 L30 86", c) + fist(29, 86, c, 4) +
+        "</g>"
+      );
+    }
+
+    var COSTUME = {
+      alon:
+        '<g fill="#2a2338"><rect x="29" y="96" width="9" height="19" rx="3"/><rect x="42" y="96" width="9" height="19" rx="3"/></g>' +
+        '<g fill="#141019"><ellipse cx="32.5" cy="116" rx="6" ry="3.4"/><ellipse cx="46.5" cy="116" rx="6" ry="3.4"/></g>' +
+        '<path d="M26 63 Q40 58 54 63 L54 97 Q40 99.5 26 97 Z" fill="#fffdf8" stroke="#d8cdbb" stroke-width=".9"/>' +
+        // the famous QR shirt
+        '<g transform="translate(34.5 67.5) scale(.92)"><rect width="12" height="12" fill="#fff"/><g fill="#241c2f">' +
+        '<rect width="4" height="4"/><rect x="8" width="4" height="4"/><rect y="8" width="4" height="4"/>' +
+        '<rect x="5" y="5" width="2" height="2"/><rect x="9" y="9" width="3" height="3"/><rect x="5" y="1" width="2" height="1.6"/>' +
+        '<rect x="1" y="5" width="1.6" height="2"/><rect x="9" y="5" width="2" height="2"/><rect x="5" y="9" width="2" height="2"/></g>' +
+        '<g fill="#fff"><rect x="1.3" y="1.3" width="1.4" height="1.4"/><rect x="9.3" y="1.3" width="1.4" height="1.4"/><rect x="1.3" y="9.3" width="1.4" height="1.4"/></g></g>',
+      inbal:
+        '<path d="M18 26 Q12 70 20 104 Q40 110 60 104 Q68 70 62 26 Z" fill="rgba(255,255,255,.62)" stroke="rgba(227,214,191,.8)" stroke-width=".8"/>' +
+        '<g fill="#d9b56a"><ellipse cx="34" cy="121.5" rx="4.2" ry="2.4"/><ellipse cx="46" cy="121.5" rx="4.2" ry="2.4"/></g>' +
+        '<path d="M30 80 Q40 83 50 80 Q62 100 66 117 Q40 125 14 117 Q18 100 30 80 Z" fill="#fffaf2" stroke="#e3d6bf" stroke-width=".9"/>' +
+        '<path d="M19 108 Q23 112 27 108 Q31 112 35 108 Q39 112 43 108 Q47 112 51 108 Q55 112 59 108" fill="none" stroke="#ead9b5" stroke-width="1.1"/>' +
+        '<path d="M27 63 Q40 58 53 63 L51 67 L29 67 Z" fill="#f2cdb0"/>' +
+        '<path d="M29 65 Q40 62 51 65 L50 80 Q40 82 30 80 Z" fill="#fffaf2" stroke="#e3d6bf" stroke-width=".9"/>' +
+        '<path d="M30 78 Q40 81 50 78 L50 81.5 Q40 84.5 30 81.5 Z" fill="#d9b56a"/>',
+    };
+
+    var MIRROR = ' transform="matrix(-1 0 0 1 80 0)"';
+    var ROPE =
+      '<line x1="11" y1="-1700" x2="11" y2="102" stroke="#8a6324" stroke-width="3.4" stroke-linecap="round"/>' +
+      '<line x1="11" y1="-1700" x2="11" y2="102" stroke="#f0d695" stroke-width="3.4" stroke-dasharray="2.4 2.6"/>' +
+      '<circle cx="11" cy="103" r="2.7" fill="#8a6324"/>';
+
+    function build(who) {
+      var c = LOOK[who];
+      var mirror = who === "inbal" ? MIRROR : "";
+      var ch = el("div", "char char-" + who);
+      ch.setAttribute("data-pose", "grip");
+      ch.innerHTML =
+        '<svg class="rope" viewBox="0 0 80 128" width="80" height="128"><g' + mirror + ">" + ROPE + "</g></svg>" +
+        '<div class="mover"><div class="puppet">' +
+          '<svg class="char-body" viewBox="0 0 80 128" width="80" height="128">' + COSTUME[who] + "<g" + mirror + ">" + arms(c) + "</g></svg>" +
+          '<div class="head"><img class="face" alt="" decoding="async"></div>' +
+        "</div></div>";
+      crew.appendChild(ch);
+      return ch;
+    }
+
+    var chars = [build("alon"), build("inbal")];
+
+    /* --- photos: configured file first, then other extensions --- */
+    var EXTS = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG", "webp", "WEBP"];
+    var FALLBACK =
+      '<svg class="fallback" viewBox="0 0 46 54" preserveAspectRatio="xMidYMid slice"><rect width="46" height="54" fill="#efc6a4"/>' +
+      '<path d="M2 24 Q5 3 23 3 Q41 3 44 24 Q37 11 23 12 Q9 11 2 24Z" fill="#6b4a33"/>' +
+      '<circle cx="16" cy="28" r="2.4" fill="#241c2f"/><circle cx="30" cy="28" r="2.4" fill="#241c2f"/>' +
+      '<path d="M15 38 Q23 44 31 38" fill="none" stroke="#241c2f" stroke-width="2.2" stroke-linecap="round"/></svg>';
+
+    function loadFace(ch, path, done) {
+      var img = $(".face", ch);
+      var list = [];
+      if (path) {
+        list.push(path);
+        var base = path.replace(/\.[^./]+$/, "");
+        EXTS.forEach(function (ext) {
+          var cnd = base + "." + ext;
+          if (list.indexOf(cnd) === -1) list.push(cnd);
+        });
+      }
+      var i = 0;
+      (function next() {
+        if (i >= list.length) {
+          img.remove();
+          $(".head", ch).insertAdjacentHTML("beforeend", FALLBACK);
+          done();
+          return;
+        }
+        img.onload = function () { img.onload = img.onerror = null; done(); };
+        img.onerror = next;
+        img.src = list[i++];
+      })();
+    }
+
+    /* --- choreography --- */
+    function later(ms, fn) { return setTimeout(fn, ms); }
+    function pose(ch, p) { ch.setAttribute("data-pose", p); }
+
+    // Each character has their own "נו נו נו" bubble; only one shows at a time.
+    chars[0].bubble = $("#bubbleAlon");
+    chars[1].bubble = $("#bubbleInbal");
+    function bubbleFor(ch, on) {
+      if (!ch.bubble) return;
+      if (on) chars.forEach(function (o) { if (o !== ch && o.bubble) o.bubble.classList.remove("show"); });
+      ch.bubble.classList.toggle("show", on);
+    }
+
+    function scold(ch, then, quiet) {
+      pose(ch, "wag");
+      if (!quiet) bubbleFor(ch, true);
+      later(1100, function () {
+        pose(ch, "crossed");
+        bubbleFor(ch, false);
+        if (then) then();
+      });
+    }
+
+    var started = false;
+    function start() {
+      if (started) return;
+      started = true;
+      crew.classList.add("in");
+      if (reducedMotion()) {
+        chars.forEach(function (ch) { pose(ch, "crossed"); $(".rope", ch).classList.add("gone"); });
+        return;
+      }
+      chars.forEach(function (ch, k) {
+        var off = k * 150; // Inbal is a beat behind Alon
+        ch.busy = true;
+        later(off + 950, function () {
+          pose(ch, "drop");
+          $(".rope", ch).classList.add("gone");
+        });
+        later(off + 1250, function () {
+          // entrance: one bubble only (Alon's), so they don't overlap
+          scold(ch, function () { ch.busy = false; }, k > 0);
+        });
+      });
+    }
+
+    var pending = 2;
+    function ready() { if (--pending === 0) start(); }
+    loadFace(chars[0], C.faces && C.faces.alon, ready);
+    loadFace(chars[1], C.faces && C.faces.inbal, ready);
+    setTimeout(start, 1200); // never keep guests waiting on a slow connection
+
+    // Tap a character: they uncross, wag, and cross their arms again.
+    chars.forEach(function (ch) {
+      ch.addEventListener("click", function () {
+        if (!started || ch.busy) return;
+        ch.busy = true;
+        vibrate(10);
+        scold(ch, function () { ch.busy = false; });
+      });
+    });
+  })();
+
   /* ---------- Sparkles in the background ---------- */
   (function buildSparkles() {
     var box = $("#sparkles");

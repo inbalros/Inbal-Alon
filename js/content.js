@@ -24,9 +24,21 @@ window.WEDDING = {
     "Please Return To The Dance Floor",
   ],
 
+  /* ---------- Photos for the two little characters in the opening ----------
+     The exact file is tried first. If it's missing, the same name with other
+     common extensions (.jpg .jpeg .png .webp, any case) is tried automatically.
+     Note: file names are case-sensitive once the site is online.            */
+  faces: {
+    inbal: "Faces/inbal.JPG",
+    alon: "Faces/alon.JPG",
+  },
+
+  /* Speech bubble while they wag their index fingers. */
+  crew: {
+    bubble: "נו נו נו! ☝️",
+  },
+
   letterhead: {
-    org: "ההנהלה",
-    sub: "חתונת ענבל ואלון · 14.12.2026",
     page1: "עמ׳ 1 / 2",
     page2: "עמ׳ 2 / 2",
   },
@@ -34,7 +46,7 @@ window.WEDDING = {
   /* ---------- Opening: official warning ---------- */
   notice: {
     label: "הודעה מההנהלה ⚠️",
-    headline: "מה לעזאזל אתם עושים פה?! 🤨",
+    headline: "מה לעזאזל אתם עושים פה?!",
     body: "באמת עצרתם באמצע החתונה שלנו כדי לסרוק את החולצה של החתן?!",
     urgentTag: "דחוף",
     warning: "תחזרו לרחבה מיד! 🕺",
@@ -43,7 +55,7 @@ window.WEDDING = {
       "הסריקה שלכם כבר נרשמה במערכת, ונפתח לכם תיק בהנהלה.",
       "אבל אל דאגה, יש דרך לכפר על המעשים שלכם.",
     ],
-    cta: "לדרכי הכפרה",
+    cta: "הדרך לחנינה",
   },
 
   /* ---------- The case file ----------
@@ -69,13 +81,12 @@ window.WEDDING = {
   quest: {
     emoji: "🎯",
     heading: "Wedding Side Quest",
-    sub: "משימות צד לכפרה על העבירה",
     intro: [
       "לפניכם כמה משימות. סמנו ✓ על כל משימה שהצלחתם להשלים.",
       "אם תצליחו להשלים את כולן, אולי ההנהלה תסלח לכם והעבירה תימחק מהמערכת.",
     ],
     disclaimer: "בלי הבטחות. 😏",
-    progressLabel: "מד כפרה",
+    progressLabel: "הדרך לחנינה",
     doneStamp: "בוצע",
     reset: "איפוס התיק ↺",
     resetConfirm: "בטוחים? לחצו שוב לאיפוס",

@@ -37,34 +37,34 @@
 
     <!-- ===================== PAGE 1 · THE NOTICE ===================== -->
     <article class="sheet sheet-notice" aria-labelledby="headline">
-      <svg class="paperclip" viewBox="0 0 40 110" aria-hidden="true">
-        <path d="M28 30 V84 a12 12 0 0 1 -24 0 V18 a8 8 0 0 1 16 0 V78 a4 4 0 0 1 -8 0 V30"
-              fill="none" stroke="url(#clipGrad)" stroke-width="3.2" stroke-linecap="round"/>
-        <defs>
-          <linearGradient id="clipGrad" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0" stop-color="#f3dfa6"/><stop offset=".5" stop-color="#b48a3c"/><stop offset="1" stop-color="#e2c27a"/>
-          </linearGradient>
-        </defs>
-      </svg>
       <span class="page-no" data-text="letterhead.page1"></span>
 
-      <header class="letterhead rise" style="--d:0">
-        <div class="crest"><span dir="ltr" data-text="couple.monogram"></span></div>
-        <p class="org" data-text="letterhead.org"></p>
-        <p class="org-sub" data-text="letterhead.sub"></p>
-        <div class="rule"><span>✦</span></div>
-      </header>
+      <span class="siren-glow" aria-hidden="true"></span>
+      <span class="siren" aria-hidden="true"><i class="lens lens-red"></i><i class="lens lens-blue"></i></span>
+      <span class="corner corner-tr" aria-hidden="true"></span>
+      <span class="corner corner-tl" aria-hidden="true"></span>
 
-      <p class="alert-pill rise" style="--d:1">
-        <span class="alert-dot" aria-hidden="true"></span>
-        <span data-text="notice.label"></span>
-      </p>
+      <div class="alert-row rise" style="--d:0">
+        <p class="alert-pill">
+          <span class="alert-dot" aria-hidden="true"></span>
+          <span data-text="notice.label"></span>
+        </p>
+        <span class="alert-rule" aria-hidden="true"></span>
+      </div>
 
-      <h1 class="headline rise" id="headline" style="--d:2" data-text="notice.headline"></h1>
+      <div class="headline-block">
+        <!-- Inbal & Alon rappel in, wag a finger, then cross their arms. Tap either one. -->
+        <div class="crew-slot" aria-hidden="true">
+          <div class="crew" id="crew"></div>
+          <span class="bubble bubble-alon" id="bubbleAlon" data-text="crew.bubble"></span>
+          <span class="bubble bubble-inbal" id="bubbleInbal" data-text="crew.bubble"></span>
+        </div>
+        <h1 class="headline rise" id="headline" style="--d:1" data-text="notice.headline"></h1>
+      </div>
 
-      <p class="lead rise" style="--d:3" data-text="notice.body"></p>
+      <p class="lead rise" style="--d:2" data-text="notice.body"></p>
 
-      <div class="warning rise" style="--d:4" role="note">
+      <div class="warning rise" style="--d:3" role="note">
         <span class="warning-tag" data-text="notice.urgentTag"></span>
         <strong data-text="notice.warning"></strong>
       </div>
@@ -92,12 +92,10 @@
       <span class="page-no" data-text="letterhead.page2"></span>
 
       <header class="quest-head reveal">
-        <p class="quest-kicker" aria-hidden="true"><span>✦</span> <span dir="ltr" lang="en">Chapter II</span> <span>✦</span></p>
         <h2 class="quest-title" id="questTitle" dir="ltr" lang="en">
           <span class="quest-emoji" data-text="quest.emoji"></span>
           <span class="quest-word" data-text="quest.heading"></span>
         </h2>
-        <p class="quest-sub" data-text="quest.sub"></p>
       </header>
 
       <div class="quest-intro reveal">
